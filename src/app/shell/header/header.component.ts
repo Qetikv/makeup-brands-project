@@ -5,10 +5,9 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
   get isEn(): boolean {
     return this.isLanguage('en');
   }
@@ -25,11 +24,12 @@ export class HeaderComponent implements OnInit {
     return false;
   }
 
-  constructor(private translateService: TranslateService,
-               private router: Router) { }
+  constructor(
+    private translateService: TranslateService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   en() {
     this.translateService.use('en');
@@ -39,23 +39,22 @@ export class HeaderComponent implements OnInit {
     this.translateService.use('ka');
   }
 
-  private isLanguage(lang:string):boolean {
+  private isLanguage(lang: string): boolean {
     const defaultLang = this.translateService.defaultLang;
     const currentLang = this.translateService.currentLang;
 
     return currentLang ? currentLang === lang : defaultLang === lang;
   }
 
-  goToSignIn(){
+  goToSignIn() {
     this.router.navigate(['sign-in']);
   }
 
-  goToSignUp(){
+  goToSignUp() {
     this.router.navigate(['sign-up']);
   }
 
-  signOut(){
+  signOut() {
     console.log('signing out...');
   }
-
 }

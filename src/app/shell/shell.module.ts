@@ -8,23 +8,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
-
-
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [HeaderComponent, NotFoundComponent],
   imports: [
     CommonModule,
+    SharedModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
     TranslateModule,
-    RouterModule
+    RouterModule,
   ],
-  exports: [
-    HeaderComponent,
-    NotFoundComponent
-  ]
+  exports: [HeaderComponent, NotFoundComponent],
 })
-export class ShellModule { }
+export class ShellModule {}

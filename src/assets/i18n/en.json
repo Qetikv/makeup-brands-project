@@ -1,4 +1,12 @@
 {
   "HOME": "Home",
-  "UNIVERSITY LIST": "University List"
+  "UNIVERSITY LIST": "University List",
+  "AUTH": {
+    "SIGN-UP": {
+      "REGISTRATION": "Registration",
+      "EMAIL": "Enter your email",
+      "PASSWORD": "Enter your password",
+      "REPEATED_PASSWORD": "Repeat your password"
+    }
+  }
 }

@@ -6,8 +6,6 @@ import { AddComponent } from './add/add.component';
 import { ContentComponnent } from './content.component';
 import { DetailsComponent } from './details/details.component';
 
-
-
 @NgModule({
   declarations: [
     ListComponent,
@@ -20,4 +18,5 @@ import { DetailsComponent } from './details/details.component';
     ContentRoutingModule
   ]
 })
+
 export class ContentModule { }
