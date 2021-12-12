@@ -1,1 +1,53 @@
-<p>sign-in works!</p>
+<form
+  (ngSubmit)="signIn(form.value)"
+  #form="ngForm"
+>
+  <mat-grid-list cols="1" rowHeight="500px">
+    <mat-grid-tile>
+      <div class="example-container">
+        <mat-form-field appearance="fill" class="width-100">
+          <mat-label>{{ "AUTH.REGISTRATION.EMAIL" | translate }}</mat-label>
+          <input
+            matInput
+            type="email"
+            #email="ngModel"
+            ngModel
+            name="email"
+            pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+            required
+            placeholder="Ex. email@example.com"
+          />
+          <mat-error *ngIf="email.hasError('required')">{{ "AUTH.REGISTRATION.EMAIL_REQUIRED" | translate }}</mat-error>
+          <mat-error *ngIf="email.invalid">{{ "AUTH.REGISTRATION.INVALID_EMAIL" | translate }}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="width-100">
+          <mat-label>{{ "AUTH.REGISTRATION.PASSWORD" | translate }}</mat-label>
+          <input
+            matInput
+            ngModel
+            name="password"
+            #password="ngModel"
+            class="form-control"
+            required
+            [type]="hide ? 'password' : 'text'"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="password.hasError('required')">{{ "AUTH.REGISTRATION.SIGN_IN" | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" color="primary">
+          {{ "AUTH.REGISTRATION.SIGN_IN" | translate }}
+        </button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

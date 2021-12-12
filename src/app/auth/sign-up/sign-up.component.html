@@ -6,9 +6,9 @@
   <mat-grid-list cols="1" rowHeight="500px">
     <mat-grid-tile>
       <div class="example-container">
-        <div class="registration">{{ "AUTH.SIGN-UP.REGISTRATION" | translate }}</div>
+        <div class="registration">{{ "AUTH.REGISTRATION.REGISTRATION" | translate }}</div>
         <mat-form-field appearance="fill" class="width-100">
-          <mat-label>{{ "AUTH.SIGN-UP.EMAIL" | translate }}</mat-label>
+          <mat-label>{{ "AUTH.REGISTRATION.EMAIL" | translate }}</mat-label>
           <input
             matInput
             type="email"
@@ -19,11 +19,11 @@
             required
             placeholder="Ex. email@example.com"
           />
-          <mat-error *ngIf="email.hasError('required')">Email is required</mat-error>
-          <mat-error *ngIf="email.invalid">Email is invalid</mat-error>
+          <mat-error *ngIf="email.hasError('required')">{{ "AUTH.REGISTRATION.EMAIL_REQUIRED" | translate }}</mat-error>
+          <mat-error *ngIf="email.invalid">{{ "AUTH.REGISTRATION.INVALID_EMAIL" | translate }}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="width-100">
-          <mat-label>{{ "AUTH.SIGN-UP.PASSWORD" | translate }}</mat-label>
+          <mat-label>{{ "AUTH.REGISTRATION.PASSWORD" | translate }}</mat-label>
           <input
             matInput
             ngModel
@@ -42,10 +42,10 @@
           >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
-          <mat-error *ngIf="password.hasError('required')">Password is required</mat-error>
+          <mat-error *ngIf="password.hasError('required')">{{ "AUTH.REGISTRATION.PASSWORD_REQUIRED" | translate }}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="width-100">
-          <mat-label>{{ "AUTH.SIGN-UP.REPEAT_PASSWORD" | translate }}</mat-label>
+          <mat-label>{{ "AUTH.REGISTRATION.REPEAT_PASSWORD" | translate }}</mat-label>
           <input
             matInput
             ngModel
@@ -64,11 +64,11 @@
           >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
-          <mat-error *ngIf="repeatPassword.hasError('required')">{{ "AUTH.SIGN-UP.MATCH_PASSWORD" | translate }}</mat-error>
-          <mat-error *ngIf="repeatPassword.invalid && !repeatPassword.hasError('required')">{{ "AUTH.SIGN-UP.NO_MATCH_PASSWORD" | translate }}</mat-error>
+          <mat-error *ngIf="repeatPassword.hasError('required')">{{ "AUTH.REGISTRATION.MATCH_PASSWORD" | translate }}</mat-error>
+          <mat-error *ngIf="repeatPassword.invalid && !repeatPassword.hasError('required')">{{ "AUTH.REGISTRATION.NO_MATCH_PASSWORD" | translate }}</mat-error>
         </mat-form-field>
         <button mat-raised-button type="submit" color="primary">
-          {{ "AUTH.SIGN-UP.REGISTRATION" | translate }}
+          {{ "AUTH.REGISTRATION.REGISTRATION" | translate }}
         </button>
       </div>
     </mat-grid-tile>

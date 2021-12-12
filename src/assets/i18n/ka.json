@@ -2,14 +2,17 @@
   "HOME": "მთავარი",
   "UNIVERSITY LIST": "უნივერსიტეტების კატალოგი",
   "AUTH": {
-    "SIGN-UP": {
+    "REGISTRATION": {
       "REGISTRATION": "რეგისტრაცია",
       "EMAIL": "ჩაწერეთ თქვენი იმეილი",
       "PASSWORD": "ჩაწერეთ თქვენი პაროლი",
       "REPEAT_PASSWORD": "გაიმეორეთ პაროლი",
       "MATCH_PASSWORD": "გთხოვთ დაადასტუროთ პაროლი",
       "NO_MATCH_PASSWORD": "პაროლები არ ემთხვევა",
-      "PASSWORD_REQUIRED": "პაროლი აუცილებელია"
+      "PASSWORD_REQUIRED": "პაროლი აუცილებელია",
+      "INVALID_EMAIL": "იმეილი არასწორია",
+      "EMAIL_REQUIRED": "იმეილი აუცილებელია",
+      "SIGN_IN": "შესვლა"
     }
   }
 }

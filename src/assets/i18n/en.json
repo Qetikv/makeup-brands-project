@@ -2,14 +2,17 @@
   "HOME": "Home",
   "UNIVERSITY LIST": "University List",
   "AUTH": {
-    "SIGN-UP": {
+    "REGISTRATION": {
       "REGISTRATION": "Registration",
       "EMAIL": "Enter your email",
       "PASSWORD": "Enter your password",
       "REPEAT_PASSWORD": "Repeat your password",
       "MATCH_PASSWORD": "Please confirm your password",
       "PASSWORD_REQUIRED": "Password is required",
-      "NO_MATCH_PASSWORD": "Passwords don't match"
+      "NO_MATCH_PASSWORD": "Passwords don't match",
+      "INVALID_EMAIL": "Email is invalid",
+      "EMAIL_REQUIRED": "Email is required",
+      "SIGN_IN": "Sign In"
     }
   }
 }
