@@ -1,5 +1,7 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { mustMatch } from 'src/app/shared/utils/validators.fn';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,9 +14,12 @@ export class SignUpComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+  }
 
   signUp(form: NgForm) {
-    console.log(form);
+    if(form.invalid) {
+      return;
+    }
   }
 }

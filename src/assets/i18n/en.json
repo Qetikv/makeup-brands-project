@@ -6,7 +6,10 @@
       "REGISTRATION": "Registration",
       "EMAIL": "Enter your email",
       "PASSWORD": "Enter your password",
-      "REPEATED_PASSWORD": "Repeat your password"
+      "REPEAT_PASSWORD": "Repeat your password",
+      "MATCH_PASSWORD": "Please confirm your password",
+      "PASSWORD_REQUIRED": "Password is required",
+      "NO_MATCH_PASSWORD": "Passwords don't match"
     }
   }
 }

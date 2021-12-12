@@ -6,7 +6,10 @@
       "REGISTRATION": "რეგისტრაცია",
       "EMAIL": "ჩაწერეთ თქვენი იმეილი",
       "PASSWORD": "ჩაწერეთ თქვენი პაროლი",
-      "REPEATED_PASSWORD": "გაიმეორეთ პაროლი"
+      "REPEAT_PASSWORD": "გაიმეორეთ პაროლი",
+      "MATCH_PASSWORD": "გთხოვთ დაადასტუროთ პაროლი",
+      "NO_MATCH_PASSWORD": "პაროლები არ ემთხვევა",
+      "PASSWORD_REQUIRED": "პაროლი აუცილებელია"
     }
   }
 }

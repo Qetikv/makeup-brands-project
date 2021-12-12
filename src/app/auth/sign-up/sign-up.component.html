@@ -1,7 +1,7 @@
 <form
   (ngSubmit)="signUp(form)"
   #form="ngForm"
-  [mustMatch]="['password', 'repeatedPassword']"
+  [mustMatch]="['password','repeatPassword']"
 >
   <mat-grid-list cols="1" rowHeight="500px">
     <mat-grid-tile>
@@ -12,12 +12,15 @@
           <input
             matInput
             type="email"
+            #email="ngModel"
             ngModel
             name="email"
             pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
             required
             placeholder="Ex. email@example.com"
           />
+          <mat-error *ngIf="email.hasError('required')">Email is required</mat-error>
+          <mat-error *ngIf="email.invalid">Email is invalid</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="width-100">
           <mat-label>{{ "AUTH.SIGN-UP.PASSWORD" | translate }}</mat-label>
@@ -39,9 +42,10 @@
           >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
+          <mat-error *ngIf="password.hasError('required')">Password is required</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="width-100">
-          <mat-label>{{ "AUTH.SIGN-UP.REPEATED_PASSWORD" | translate }}</mat-label>
+          <mat-label>{{ "AUTH.SIGN-UP.REPEAT_PASSWORD" | translate }}</mat-label>
           <input
             matInput
             ngModel
@@ -60,6 +64,8 @@
           >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
+          <mat-error *ngIf="repeatPassword.hasError('required')">{{ "AUTH.SIGN-UP.MATCH_PASSWORD" | translate }}</mat-error>
+          <mat-error *ngIf="repeatPassword.invalid && !repeatPassword.hasError('required')">{{ "AUTH.SIGN-UP.NO_MATCH_PASSWORD" | translate }}</mat-error>
         </mat-form-field>
         <button mat-raised-button type="submit" color="primary">
           {{ "AUTH.SIGN-UP.REGISTRATION" | translate }}
@@ -67,12 +73,4 @@
       </div>
     </mat-grid-tile>
   </mat-grid-list>
-  <!-- <div *ngIf="form.submitted && form.invalid">
-      <div style="color:red" class="error" *ngIf="form.controls.emails?.errors?.required">Email not valid</div>
-      <div class="alert alert-danger" role="alert" *ngIf="form.controls.emails?.errors?.required">
-        This is a danger alert—check it out!
-      </div>
-    </div> -->
 </form>
-
-<!-- [mustMatch]="['password','repeatPassword']" -->
