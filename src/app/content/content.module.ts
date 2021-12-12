@@ -11,7 +11,7 @@ import { DetailsComponent } from './details/details.component';
     ListComponent,
     AddComponent,
     ContentComponnent,
-    DetailsComponent
+    DetailsComponent,
   ],
   imports: [
     CommonModule,

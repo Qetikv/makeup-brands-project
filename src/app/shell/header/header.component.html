@@ -6,7 +6,10 @@
   <button (click)="en()">EN</button>
   <button (click)="ka()">KA</button>
 
-  <button (click)="goToSignIn()"> {{ "AUTH.REGISTRATION.SIGN_IN" | translate }}</button>
-  <button (click)="goToSignUp()"> {{ "AUTH.REGISTRATION.REGISTRATION" | translate }}</button>
-  <button (click)="signOut()">Sign Out</button>
+  <ng-container *ngIf="!isLoggedIn">
+    <button (click)="goToSignIn()"> {{ "AUTH.REGISTRATION.SIGN_IN" | translate }}</button>
+    <button (click)="goToSignUp()"> {{ "AUTH.REGISTRATION.REGISTRATION" | translate }}</button>
+  </ng-container>
+
+  <button *ngIf="isLoggedIn" (click)="signOut()">Sign Out</button>
 </mat-toolbar>

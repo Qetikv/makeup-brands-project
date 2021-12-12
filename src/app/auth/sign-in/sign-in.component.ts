@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 export interface SignInForm {
-  email: String,
-  password: String
+  email: string,
+  password: string
 }
 
 @Component({
@@ -13,7 +15,7 @@ export interface SignInForm {
 export class SignInComponent implements OnInit {
   hide = true;
 
-  constructor() { }
+  constructor(private auth: AuthService, private router: Router ) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +24,10 @@ export class SignInComponent implements OnInit {
      if(!email || !password) {
        return;
      }
+
+     this.auth
+     .signIn({ email, password})
+     .then(() => this.router.navigate(['content']));
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -17,16 +18,17 @@ export class HeaderComponent implements OnInit {
   }
 
   get isLoggedIn(): boolean {
-    return false;
+    return this.auth.isLoggedIn;
   }
 
-  get isInitiated(): boolean {
-    return false;
-  }
+  // get isInitiated(): boolean {
+  //   return false;
+  // }
 
   constructor(
     private translateService: TranslateService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {}
@@ -56,5 +58,9 @@ export class HeaderComponent implements OnInit {
 
   signOut() {
     console.log('signing out...');
+
+    this.auth.signOut().then(() =>
+       this.router.navigate(['sign-in'])
+    )
   }
 }
