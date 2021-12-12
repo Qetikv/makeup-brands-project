@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat'
+import { SharedModule } from './shared/shared.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   exports: [MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule],

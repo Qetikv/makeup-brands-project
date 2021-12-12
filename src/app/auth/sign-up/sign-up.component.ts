@@ -2,7 +2,10 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { from } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
+import { LoadingService } from 'src/app/services/loading.service';
 import { mustMatch } from 'src/app/shared/utils/validators.fn';
 
 export interface SignUpForm {
@@ -19,7 +22,7 @@ export interface SignUpForm {
 export class SignUpComponent implements OnInit {
   hide = true;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router, private loadingService: LoadingService) {}
 
   ngOnInit() {
   }
@@ -29,7 +32,14 @@ export class SignUpComponent implements OnInit {
       return;
     }
 
-   this.auth.signUp(form.value).then(() => this.router.navigate(['content']))
+   this.loadingService.start();
+
+   from(this.auth.signUp(form.value))
+   .pipe(finalize(() => this.loadingService.stop()))
+   .subscribe(() => {
+    this.router.navigate(['content']);
+   })
+
 
   }
 
