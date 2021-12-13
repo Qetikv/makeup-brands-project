@@ -10,14 +10,14 @@ const routes: Routes = [
     path: '',
     component: ContentComponnent,
   },
-  // {
-  //   path: 'sign-in',
-  //   component: SignInComponent,
-  // },
-  // {
-  //   path: 'sign-up',
-  //   component: SignUpComponent,
-  // },
+  {
+    path: 'add',
+    component: AddComponent,
+  },
+  {
+    path: 'list',
+    component: ListComponent,
+  },
 ];
 
 @NgModule({

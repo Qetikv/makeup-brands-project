@@ -5,6 +5,15 @@ import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
 import { ContentComponnent } from './content.component';
 import { DetailsComponent } from './details/details.component';
+import { SharedModule } from '../shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +24,14 @@ import { DetailsComponent } from './details/details.component';
   ],
   imports: [
     CommonModule,
-    ContentRoutingModule
+    ContentRoutingModule,
+    SharedModule,
+    MatButtonModule,
+    MatToolbarModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatInputModule
   ]
 })
 

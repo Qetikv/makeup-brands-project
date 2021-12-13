@@ -1,1 +1,33 @@
-<p>add works!</p>
+<mat-toolbar color="white" class="search-bar">
+  <mat-form-field color="primary">
+    <input
+      name="searchdata"
+      #searchdata="ngModel"
+      matInput
+      [(ngModel)]="searchKey"
+      required
+      placeholder="Search..."
+    />
+  </mat-form-field>
+  <button
+    mat-stroked-button
+    color="primary"
+    class="common-button"
+    (click)="search()"
+  >
+    Search a Movie
+  </button>
+</mat-toolbar>
+<mat-error *ngIf="searchdata.hasError('required')">You must enter an university</mat-error>
+<p>
+  <button
+    mat-raised-button
+    color="primary"
+    matBadge="8"
+    matBadgePosition="before"
+    matBadgeColor="accent"
+    *ngFor="let name of lastThreeSearches"
+  >
+    {{ name }}
+  </button>
+</p>
