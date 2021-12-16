@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  makeUpApiBase: 'http://makeup-api.herokuapp.com/api/v1/products.json',
+  currencyApiBase: 'https://restcountries.com/v3.1',
   firebase: {
     projectId: 'comm-project-ecc1f',
     appId: '1:555258376095:web:dd36a78c508acb4b81d7aa',

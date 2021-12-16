@@ -12,14 +12,15 @@
   <button
     mat-stroked-button
     color="primary"
-    class="common-button"
+    class="search-button"
     (click)="search()"
   >
-    Search a Movie
+    Search a makeup
   </button>
 </mat-toolbar>
-<mat-error *ngIf="searchdata.hasError('required')">You must enter an university</mat-error>
-<p>
+
+<mat-error *ngIf="searchdata.hasError('required')">You must enter a makeup name</mat-error>
+<!-- <p>
   <button
     mat-raised-button
     color="primary"
@@ -30,4 +31,10 @@
   >
     {{ name }}
   </button>
-</p>
+</p> -->
+
+
+<div *ngFor="let selectedMakeup of (selectedMakeup$ | async)">
+  <h2>{{ selectedMakeup.name }}</h2>
+  <div><img [src]="selectedMakeup.pictureUrl" /></div>
+</div>

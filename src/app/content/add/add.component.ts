@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Makeup } from '../models';
+import { AddMakeupFacade } from './add-makeup.facade';
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss']
+  styleUrls: ['./add.component.scss'],
 })
 export class AddComponent implements OnInit {
-
-  lastThreeSearches =['Avatar','Harry Poter', 'Godfather'];
+  lastThreeSearches = [];
 
   searchKey: string = '';
   searchHasError = false;
+  selectedMakeup$: Observable<Makeup[] | undefined> | undefined = undefined;
 
-  constructor() { }
+  constructor(private facade: AddMakeupFacade) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   search() {
-    if(!this.searchKey) {
+    if (!this.searchKey) {
       return;
     }
-    console.log(this.searchKey);
+    this.selectedMakeup$ = this.facade.fetchMakeup(this.searchKey);
   }
+
 
 }
