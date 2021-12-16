@@ -14,6 +14,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MakeUpApiService } from './services/makeup-api.service';
 import { CurrencyApiService } from './services/currency-api.service';
+import { AddMakeupStorage } from './add/add-makeup.storage';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { CurrencyApiService } from './services/currency-api.service';
     MatAutocompleteModule,
     MatInputModule
   ],
-  providers:[MakeUpApiService,CurrencyApiService]
+  providers:[MakeUpApiService,CurrencyApiService, AddMakeupStorage]
 })
 
 export class ContentModule { }

@@ -5,6 +5,7 @@ import { Makeup, MakeupResult } from '../models';
 import { Country, CountryResult } from '../models/country.model';
 import { CurrencyApiService } from '../services/currency-api.service';
 import { MakeUpApiService } from '../services/makeup-api.service';
+import { AddMakeupStorage } from './add-makeup.storage';
 
 @Injectable({
   providedIn: 'root',
@@ -13,21 +14,21 @@ export class AddMakeupFacade {
   constructor(
     private makeUpApiService: MakeUpApiService,
     private loadingService: LoadingService,
-    private currencyApiService: CurrencyApiService
+    private currencyApiService: CurrencyApiService,
+    private storage: AddMakeupStorage
   ) {}
 
- private mapCountry(country: CountryResult[]): Country {
-  const cc = country[0];
-  return {
-    name: cc.name.common,
-    population: cc.population,
-    flagUrl: this.currencyApiService.getFlagUrl(
-      cc.cca2.toLowerCase())
-
-  };
-}
-
-
+  get lastThreeSearches(): string[] {
+    return this.storage.lastThreeSearches;
+  }
+  private mapCountry(country: CountryResult[]): Country {
+    const cc = country[0];
+    return {
+      name: cc.name.common,
+      population: cc.population,
+      flagUrl: this.currencyApiService.getFlagUrl(cc.cca2.toLowerCase()),
+    };
+  }
 
   fetchMakeup(name: string) {
     this.loadingService.start();
@@ -42,11 +43,7 @@ export class AddMakeupFacade {
 
         const countriesCurrency$ = this.currencyApiService
           .getCurrency(currency[0])
-          .pipe(
-            map<CountryResult[], Country>((c) => this.mapCountry(c))
-
-
-          );
+          .pipe(map<CountryResult[], Country>((c) => this.mapCountry(c)));
 
         countriesCurrency$.subscribe((x) => console.log(x));
       }),
@@ -63,5 +60,13 @@ export class AddMakeupFacade {
         finalize(() => this.loadingService.stop())
       )
     );
+  }
+
+  addToLastSearches(name: string) {
+    this.storage.addToLastSearches(name);
+  }
+
+  restoreState() {
+    this.storage.restoreState();
   }
 }

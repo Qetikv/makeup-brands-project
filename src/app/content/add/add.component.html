@@ -20,21 +20,23 @@
 </mat-toolbar>
 
 <mat-error *ngIf="searchdata.hasError('required')">You must enter a makeup name</mat-error>
-<!-- <p>
+<p>
   <button
     mat-raised-button
     color="primary"
     matBadge="8"
     matBadgePosition="before"
     matBadgeColor="accent"
+    (click)="fetchMakeup(name)"
     *ngFor="let name of lastThreeSearches"
   >
     {{ name }}
   </button>
-</p> -->
+</p>
 
 
 <div *ngFor="let selectedMakeup of (selectedMakeup$ | async)">
   <h2>{{ selectedMakeup.name }}</h2>
+
   <div><img [src]="selectedMakeup.pictureUrl" /></div>
 </div>

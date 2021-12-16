@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat'
 import { SharedModule } from './shared/shared.module';
+import { AddMakeupStorage } from './content/add/add-makeup.storage';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -45,7 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularFireModule.initializeApp(environment.firebase),
   ],
   exports: [MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule],
-  providers: [],
+  providers: [AddMakeupStorage],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
