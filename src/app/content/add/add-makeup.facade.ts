@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { finalize, map, tap } from 'rxjs/operators';
 import { LoadingService } from 'src/app/services';
+import { FireApiService } from 'src/app/services/fire-api.service';
 import { Makeup, MakeupResult } from '../models';
+import { MakeupBody } from '../models/content.model';
 import { Country, CountryResult } from '../models/country.model';
 import { CurrencyApiService } from '../services/currency-api.service';
 import { MakeUpApiService } from '../services/makeup-api.service';
@@ -15,7 +17,8 @@ export class AddMakeupFacade {
     private makeUpApiService: MakeUpApiService,
     private loadingService: LoadingService,
     private currencyApiService: CurrencyApiService,
-    private storage: AddMakeupStorage
+    private storage: AddMakeupStorage,
+    private fireApiService: FireApiService
   ) {}
 
   get lastThreeSearches(): string[] {
@@ -51,6 +54,7 @@ export class AddMakeupFacade {
         (makeups) =>
           makeups.map((makeup) => {
             return {
+              id: makeup.id,
               name: makeup.name,
               pictureUrl: makeup.api_featured_image,
               currency: [],
@@ -68,5 +72,9 @@ export class AddMakeupFacade {
 
   restoreState() {
     this.storage.restoreState();
+  }
+
+  submit(body: MakeupBody) {
+    this.fireApiService.addMakeup(body).subscribe(x => console.log(x));
   }
 }

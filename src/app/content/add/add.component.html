@@ -39,4 +39,38 @@
   <h2>{{ selectedMakeup.name }}</h2>
 
   <div><img [src]="selectedMakeup.pictureUrl" /></div>
+
+  <div *ngIf="selectedMakeup">
+    <form [formGroup]="form" (submit)="submit(selectedMakeup)">
+      <mat-form-field appearance="fill">
+        <mat-label>Input</mat-label>
+        <textarea formControlName="description" matInput></textarea>
+        <mat-error *ngIf="submitted && form.invalid">reviu savaldebuloa</mat-error>
+        <span>Characters:{{form.controls.review?.value.length}}</span>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select id="rating" formControlName="rating"  >
+          <mat-option *ngFor="let rating of ratings" [value]="rating" >{{ rating }}</mat-option>
+        </mat-select>
+
+      </mat-form-field>
+
+        <mat-radio-group aria-label="Select an option" formControlName='status'>
+          <mat-radio-button [value]="status.Purchased">purchased</mat-radio-button>
+          <mat-radio-button [value]="status.Purchase_Later">purchase-later</mat-radio-button>
+        </mat-radio-group>
+
+        <div *ngIf="canBuyLater">
+          <mat-select class="select-purchase-option" formControlName="whenToBuy"  >
+            <mat-option  [value]="null" hidden >When to buy</mat-option>
+
+            <mat-option *ngFor="let w of whenToBuy" [value]="w.value">{{w.label | translate}}</mat-option>
+            <mat-error *ngIf="form.controls.whenToBuy?.errors?.required"></mat-error>
+          </mat-select>
+        </div>
+      <button class="button" type="submit">Add</button>
+
+    </form>
+  </div>
 </div>

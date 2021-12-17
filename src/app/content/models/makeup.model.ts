@@ -12,6 +12,7 @@ export interface MakeupResult {
 }
 
 export interface Makeup {
+  id:string,
   name: string;
   pictureUrl: string
   currency:Country[];

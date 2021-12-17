@@ -8,13 +8,15 @@ import { DetailsComponent } from './details/details.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MakeUpApiService } from './services/makeup-api.service';
 import { CurrencyApiService } from './services/currency-api.service';
 import { AddMakeupStorage } from './add/add-makeup.storage';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioButton, MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -27,12 +29,15 @@ import { AddMakeupStorage } from './add/add-makeup.storage';
     CommonModule,
     ContentRoutingModule,
     SharedModule,
+    ReactiveFormsModule,
+    MatRadioModule,
     MatButtonModule,
     MatToolbarModule,
     FormsModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   providers:[MakeUpApiService,CurrencyApiService, AddMakeupStorage]
 })
