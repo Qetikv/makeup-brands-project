@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './shell/not-found/not-found.component';
-import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard'
+import {
+  AngularFireAuthGuard,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+} from '@angular/fire/compat/auth-guard';
 
 const redirectLoggedInToItems = () => redirectLoggedInTo(['content']);
 const rediirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['sign-in']);

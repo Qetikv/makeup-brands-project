@@ -9,6 +9,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HeaderComponent, NotFoundComponent],
@@ -21,6 +22,8 @@ import { SharedModule } from '../shared/shared.module';
     MatMenuModule,
     TranslateModule,
     RouterModule,
+    FormsModule,
+    MatButtonModule
   ],
   exports: [HeaderComponent, NotFoundComponent],
 })

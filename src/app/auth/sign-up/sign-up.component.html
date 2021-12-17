@@ -1,12 +1,14 @@
 <form
   (ngSubmit)="signUp(form)"
   #form="ngForm"
-  [mustMatch]="['password','repeatPassword']"
+  [mustMatch]="['password', 'repeatPassword']"
 >
   <mat-grid-list cols="1" rowHeight="500px">
     <mat-grid-tile>
       <div class="example-container">
-        <div class="registration">{{ "AUTH.REGISTRATION.REGISTRATION" | translate }}</div>
+        <div class="registration">
+          {{ "AUTH.REGISTRATION.REGISTRATION" | translate }}
+        </div>
         <mat-form-field appearance="fill" class="width-100">
           <mat-label>{{ "AUTH.REGISTRATION.EMAIL" | translate }}</mat-label>
           <input
@@ -19,8 +21,12 @@
             required
             placeholder="Ex. email@example.com"
           />
-          <mat-error *ngIf="email.hasError('required')">{{ "AUTH.REGISTRATION.EMAIL_REQUIRED" | translate }}</mat-error>
-          <mat-error *ngIf="email.invalid">{{ "AUTH.REGISTRATION.INVALID_EMAIL" | translate }}</mat-error>
+          <mat-error *ngIf="email.hasError('required')">{{
+            "AUTH.REGISTRATION.EMAIL_REQUIRED" | translate
+          }}</mat-error>
+          <mat-error *ngIf="email.invalid">{{
+            "AUTH.REGISTRATION.INVALID_EMAIL" | translate
+          }}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="width-100">
           <mat-label>{{ "AUTH.REGISTRATION.PASSWORD" | translate }}</mat-label>
@@ -42,10 +48,14 @@
           >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
-          <mat-error *ngIf="password.hasError('required')">{{ "AUTH.REGISTRATION.PASSWORD_REQUIRED" | translate }}</mat-error>
+          <mat-error *ngIf="password.hasError('required')">{{
+            "AUTH.REGISTRATION.PASSWORD_REQUIRED" | translate
+          }}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="width-100">
-          <mat-label>{{ "AUTH.REGISTRATION.REPEAT_PASSWORD" | translate }}</mat-label>
+          <mat-label>{{
+            "AUTH.REGISTRATION.REPEAT_PASSWORD" | translate
+          }}</mat-label>
           <input
             matInput
             ngModel
@@ -64,8 +74,15 @@
           >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
-          <mat-error *ngIf="repeatPassword.hasError('required')">{{ "AUTH.REGISTRATION.MATCH_PASSWORD" | translate }}</mat-error>
-          <mat-error *ngIf="repeatPassword.invalid && !repeatPassword.hasError('required')">{{ "AUTH.REGISTRATION.NO_MATCH_PASSWORD" | translate }}</mat-error>
+          <mat-error *ngIf="repeatPassword.hasError('required')">{{
+            "AUTH.REGISTRATION.MATCH_PASSWORD" | translate
+          }}</mat-error>
+          <mat-error
+            *ngIf="
+              repeatPassword.invalid && !repeatPassword.hasError('required')
+            "
+            >{{ "AUTH.REGISTRATION.NO_MATCH_PASSWORD" | translate }}</mat-error
+          >
         </mat-form-field>
         <button mat-raised-button type="submit" color="primary">
           {{ "AUTH.REGISTRATION.REGISTRATION" | translate }}

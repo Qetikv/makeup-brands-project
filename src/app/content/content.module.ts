@@ -16,7 +16,8 @@ import { MakeUpApiService } from './services/makeup-api.service';
 import { CurrencyApiService } from './services/currency-api.service';
 import { AddMakeupStorage } from './add/add-makeup.storage';
 import { MatSelectModule } from '@angular/material/select';
-import { MatRadioButton, MatRadioModule } from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
+import { MakeupListItemComponent } from './list/movie-list-item/makeup-list-item.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MatRadioButton, MatRadioModule } from '@angular/material/radio';
     AddComponent,
     ContentComponnent,
     DetailsComponent,
+    MakeupListItemComponent,
   ],
   imports: [
     CommonModule,

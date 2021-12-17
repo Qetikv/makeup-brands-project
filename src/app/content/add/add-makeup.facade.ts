@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { finalize, map, tap } from 'rxjs/operators';
 import { LoadingService } from 'src/app/services';
+import { EventBusService } from 'src/app/services/event-bus.service';
 import { FireApiService } from 'src/app/services/fire-api.service';
 import { Makeup, MakeupResult } from '../models';
-import { MakeupBody } from '../models/content.model';
+import { FORM_RESET_EVENT_KEY, MakeupBody } from '../models/content.model';
 import { Country, CountryResult } from '../models/country.model';
 import { CurrencyApiService } from '../services/currency-api.service';
 import { MakeUpApiService } from '../services/makeup-api.service';
@@ -18,7 +19,8 @@ export class AddMakeupFacade {
     private loadingService: LoadingService,
     private currencyApiService: CurrencyApiService,
     private storage: AddMakeupStorage,
-    private fireApiService: FireApiService
+    private fireApiService: FireApiService,
+    private eventBus: EventBusService
   ) {}
 
   get lastThreeSearches(): string[] {
@@ -61,7 +63,10 @@ export class AddMakeupFacade {
             };
           }),
 
-        finalize(() => this.loadingService.stop())
+        finalize(() => {
+          this.loadingService.stop();
+          this.eventBus.emit(FORM_RESET_EVENT_KEY)
+        })
       )
     );
   }

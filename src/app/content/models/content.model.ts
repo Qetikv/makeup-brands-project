@@ -1,4 +1,7 @@
+import { MakeupResult } from "./makeup.model";
+
 export const RATINGS =[1,2, 3,4,5]
+
 
 export enum Status {
   Purchased = "Purchased",
@@ -52,3 +55,15 @@ export interface MakeupBody {
   whenToBuy: WhenToBuy
 
 }
+
+
+export interface MakeupListItem {
+  data: MakeupWithId;
+  makeup: MakeupResult
+}
+
+
+export const FORM_RESET_EVENT_KEY ='FORM_RESET'
+
+
+export type MakeupWithId = MakeupBody & {id: string};

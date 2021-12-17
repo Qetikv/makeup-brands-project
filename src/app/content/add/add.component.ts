@@ -3,8 +3,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AuthService } from 'src/app/services';
+import { EventBusService } from 'src/app/services/event-bus.service';
 import { Makeup } from '../models';
-import { MakeupBody, RATINGS, Status, WhenToBuy, WhenToBuySelect, WHEN_TO_BUY } from '../models/content.model';
+import {
+  FORM_RESET_EVENT_KEY,
+  MakeupBody,
+  RATINGS,
+  Status,
+  WhenToBuy,
+  WhenToBuySelect,
+  WHEN_TO_BUY,
+} from '../models/content.model';
 import { AddMakeupFacade } from './add-makeup.facade';
 import { AddMakeupStorage } from './add-makeup.storage';
 
@@ -24,7 +33,11 @@ export class AddComponent implements OnInit, OnDestroy {
   submitted = false;
   selectedMakeup$: Observable<Makeup[] | undefined> | undefined = undefined;
 
-  constructor(private facade: AddMakeupFacade, private auth: AuthService) {}
+  constructor(
+    private eventBus: EventBusService,
+    private facade: AddMakeupFacade,
+    private auth: AuthService
+  ) {}
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
@@ -35,14 +48,22 @@ export class AddComponent implements OnInit, OnDestroy {
     this.facade.restoreState();
 
     this.form
-      .get('status')?.valueChanges.pipe(takeUntil(this.unsubscribe$))
+      .get('status')
+      ?.valueChanges.pipe(takeUntil(this.unsubscribe$))
       .subscribe((status) => this.addControlsByStatus(status));
+    this.eventBus
+      .on(FORM_RESET_EVENT_KEY)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(() => this.formReset());
   }
 
   private addControlsByStatus(status: Status) {
-    switch(status) {
+    switch (status) {
       case Status.Purchase_Later:
-        this.form.addControl('whenToBuy', new FormControl(null,Validators.required));
+        this.form.addControl(
+          'whenToBuy',
+          new FormControl(null, Validators.required)
+        );
         break;
       case Status.Purchased:
         this.form.removeControl('whenToBuy');
@@ -65,20 +86,20 @@ export class AddComponent implements OnInit, OnDestroy {
     this.submitted = true;
     console.log(this.form.value);
 
-    if(this.form.invalid){
+    if (this.form.invalid) {
       return;
     }
     const value = this.form.value;
 
     const body: MakeupBody = {
-      id:  selectedMakeup.id,
+      id: selectedMakeup.id,
       uid: this.auth.userId,
       description: value.description,
       rating: value.rating,
       status: value.status,
-      whenToBuy: value.whenToBuy || ''
-    }
-this.facade.submit(body);
+      whenToBuy: value.whenToBuy || '',
+    };
+    this.facade.submit(body);
   }
 
   get lastThreeSearches(): string[] {
@@ -86,14 +107,25 @@ this.facade.submit(body);
   }
 
   get whenToBuy(): WhenToBuySelect[] {
-     return WHEN_TO_BUY;
+    return WHEN_TO_BUY;
   }
   get ratings(): number[] {
     return RATINGS;
   }
 
   get canBuyLater(): boolean {
-    return !!this.form.get('whenToBuy')
+    return !!this.form.get('whenToBuy');
+  }
+
+  private formReset() {
+    this.form.reset;
+    this.form.updateValueAndValidity;
+
+    this.submitted =false;
+
+    this.form.get('description')?.setValue('');
+    this.form.get('rating')?.setValue(1);
+    this.form.get('status')?.setValue(Status.Purchased);
   }
   search() {
     if (!this.searchKey) {

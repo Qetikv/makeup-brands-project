@@ -1,7 +1,4 @@
-<form
-  (ngSubmit)="signIn(form.value)"
-  #form="ngForm"
->
+<form (ngSubmit)="signIn(form.value)" #form="ngForm">
   <mat-grid-list cols="1" rowHeight="500px">
     <mat-grid-tile>
       <div class="example-container">
@@ -17,8 +14,12 @@
             required
             placeholder="Ex. email@example.com"
           />
-          <mat-error *ngIf="email.hasError('required')">{{ "AUTH.REGISTRATION.EMAIL_REQUIRED" | translate }}</mat-error>
-          <mat-error *ngIf="email.invalid">{{ "AUTH.REGISTRATION.INVALID_EMAIL" | translate }}</mat-error>
+          <mat-error *ngIf="email.hasError('required')">{{
+            "AUTH.REGISTRATION.EMAIL_REQUIRED" | translate
+          }}</mat-error>
+          <mat-error *ngIf="email.invalid">{{
+            "AUTH.REGISTRATION.INVALID_EMAIL" | translate
+          }}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="width-100">
           <mat-label>{{ "AUTH.REGISTRATION.PASSWORD" | translate }}</mat-label>
@@ -40,7 +41,8 @@
           >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
-          <mat-error *ngIf="password.hasError('required')">{{ "AUTH.REGISTRATION.SIGN_IN" | translate }}
+          <mat-error *ngIf="password.hasError('required')"
+            >{{ "AUTH.REGISTRATION.PASSWORD_REQUIRED" | translate }}
           </mat-error>
         </mat-form-field>
 

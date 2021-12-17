@@ -1,15 +1,23 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button>
-    <mat-icon>school</mat-icon>
-  </button>
-  <span class="fill-space">{{ "UNIVERSITY LIST" | translate }}</span>
-  <button (click)="en()">EN</button>
-  <button (click)="ka()">KA</button>
+  <a routerLink="/" mat-icon-button>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    {{ "HOME" | translate }}
+  </a>
+
+  <span class="fill-space">{{ "MAKEUP LIST" | translate }}</span>
+  <div class="test">
+    <button mat-button (click)="en()">EN</button>
+    <button mat-button (click)="ka()">KA</button>
+  </div>
 
   <ng-container *ngIf="!isLoggedIn">
-    <button (click)="goToSignIn()"> {{ "AUTH.REGISTRATION.SIGN_IN" | translate }}</button>
-    <button (click)="goToSignUp()"> {{ "AUTH.REGISTRATION.REGISTRATION" | translate }}</button>
+    <button mat-button (click)="goToSignIn()">
+      {{ "AUTH.REGISTRATION.SIGN_IN" | translate }}
+    </button>
+    <button mat-button (click)="goToSignUp()">
+      {{ "AUTH.REGISTRATION.REGISTRATION" | translate }}
+    </button>
   </ng-container>
 
-  <button *ngIf="isLoggedIn" (click)="signOut()">Sign Out</button>
+  <button mat-button *ngIf="isLoggedIn" (click)="signOut()">Sign Out</button>
 </mat-toolbar>

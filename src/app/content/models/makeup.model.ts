@@ -1,3 +1,4 @@
+import { MakeupWithId, Status, WhenToBuy } from "./content.model";
 import { Country } from "./country.model";
 
 export interface MakeupResult {
@@ -17,4 +18,22 @@ export interface Makeup {
   pictureUrl: string
   currency:Country[];
 }[]
+
+
+export interface MakeupBody {
+  id: string,
+  uid: string | null | undefined,
+  description: string,
+  rating: number,
+  status: Status,
+  whenToBuy: WhenToBuy
+
+}
+
+
+export interface MakeupListItem {
+  data: MakeupWithId;
+  makeup: MakeupResult
+}
+
 

@@ -20,11 +20,6 @@ export class HeaderComponent implements OnInit {
   get isLoggedIn(): boolean {
     return this.auth.isLoggedIn;
   }
-
-  // get isInitiated(): boolean {
-  //   return false;
-  // }
-
   constructor(
     private translateService: TranslateService,
     private router: Router,
@@ -57,10 +52,6 @@ export class HeaderComponent implements OnInit {
   }
 
   signOut() {
-    console.log('signing out...');
-
-    this.auth.signOut().then(() =>
-       this.router.navigate(['sign-in'])
-    )
+    this.auth.signOut().then(() => this.router.navigate(['sign-in']));
   }
 }

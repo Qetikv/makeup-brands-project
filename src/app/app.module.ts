@@ -13,9 +13,10 @@ import { ShellModule } from './shell/shell.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { environment } from '../environments/environment';
-import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireModule } from '@angular/fire/compat';
 import { SharedModule } from './shared/shared.module';
 import { AddMakeupStorage } from './content/add/add-makeup.storage';
+import { FormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,10 +39,12 @@ export function HttpLoaderFactory(http: HttpClient) {
       defaultLanguage: 'en',
     }),
     AppRoutingModule,
+    FormsModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatButtonModule,
     SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
