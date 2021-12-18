@@ -19,5 +19,6 @@
     </button>
   </ng-container>
 
-  <button mat-button *ngIf="isLoggedIn" (click)="signOut()">Sign Out</button>
+  <button mat-button *ngIf="isLoggedIn" (click)="signOut()">{{ "AUTH.REGISTRATION.SIGN_OUT" | translate }}
+  </button>
 </mat-toolbar>

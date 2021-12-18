@@ -129,6 +129,7 @@ export class AddComponent implements OnInit, OnDestroy {
   }
   search() {
     if (!this.searchKey) {
+      this.searchHasError = true;
       return;
     }
     this.facade.addToLastSearches(this.searchKey);

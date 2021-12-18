@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SignInForm, SignUpForm } from '../auth';
-import { AngularFireAuth } from '@angular/fire/compat/auth'
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 interface User {
   uid: string | null | undefined;
@@ -29,42 +29,39 @@ export class AuthService {
 
   get userId() {
     return this._user?.uid;
- }
-
-
+  }
 
   constructor(private auth: AngularFireAuth) {
     this.auth.onAuthStateChanged((user) => {
-       if(user) {
+      if (user) {
         this._user = {
           email: user?.email,
-          uid: user?.uid
+          uid: user?.uid,
         };
         console.log(this._user);
 
         return;
-       }
+      }
 
-       this._user = null;
+      this._user = null;
 
       console.log(this._user);
 
       // if(!this._initiated) {
       //   this._initiated = true;
       // }
-    })
+    });
   }
 
-  signIn({email, password }: SignInForm) {
-    return this.auth.signInWithEmailAndPassword(email,password);
+  signIn({ email, password }: SignInForm) {
+    return this.auth.signInWithEmailAndPassword(email, password);
   }
 
-  signUp({email, password }: SignUpForm) {
-    return this.auth.createUserWithEmailAndPassword(email,password);
+  signUp({ email, password }: SignUpForm) {
+    return this.auth.createUserWithEmailAndPassword(email, password);
   }
 
   signOut() {
     return this.auth.signOut();
   }
-
 }

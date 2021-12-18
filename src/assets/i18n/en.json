@@ -12,7 +12,16 @@
       "NO_MATCH_PASSWORD": "Passwords don't match",
       "INVALID_EMAIL": "Email is invalid",
       "EMAIL_REQUIRED": "Email is required",
-      "SIGN_IN": "Sign In"
+      "SIGN_IN": "Sign In",
+      "SIGN_OUT": "Sign Out"
     }
-  }
+  },
+  "ADD_MAKEUP": "Add MakeUp",
+  "MAKEUP_DESCRIPTION": "Here you can find a different kind of makeup products",
+  "SEARCH_MAKEUP": "Search a makeup",
+  "SEARCH": "search..",
+  "MAKEUP_REQUIRED": "You must enter a makeup brand name",
+  "REVIEW_REQUIRED": "Product Review is required",
+  "DESCRIBE_PRODUCT": "Write a product review"
+
 }

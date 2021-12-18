@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MakeUpApiService } from './services/makeup-api.service';
 import { CurrencyApiService } from './services/currency-api.service';
@@ -18,6 +18,7 @@ import { AddMakeupStorage } from './add/add-makeup.storage';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MakeupListItemComponent } from './list/movie-list-item/makeup-list-item.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { MakeupListItemComponent } from './list/movie-list-item/makeup-list-item
     AddComponent,
     ContentComponnent,
     DetailsComponent,
-    MakeupListItemComponent,
+    MakeupListItemComponent
   ],
   imports: [
     CommonModule,
@@ -33,15 +34,15 @@ import { MakeupListItemComponent } from './list/movie-list-item/makeup-list-item
     SharedModule,
     ReactiveFormsModule,
     MatRadioModule,
+    MatIconModule,
     MatButtonModule,
     MatToolbarModule,
     FormsModule,
     MatFormFieldModule,
     MatAutocompleteModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
   ],
-  providers:[MakeUpApiService,CurrencyApiService, AddMakeupStorage]
+  providers: [MakeUpApiService, CurrencyApiService, AddMakeupStorage],
 })
-
-export class ContentModule { }
+export class ContentModule {}

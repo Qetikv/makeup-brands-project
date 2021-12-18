@@ -1,3 +1,25 @@
 .common-button {
-  margin: 20px auto;
+  margin: 40px auto;
+  justify-content: flex-end;
+  margin-left: 150px;
+  margin-bottom: 50px;
+}
+
+
+.background{
+  height: 100vh;
+  width: 100%;
+  background: url('https://img5.goodfon.com/wallpaper/nbig/5/7d/decorative-cosmetics-makeup-kosmetika-teni-makiiazh-kistochk.jpg') no-repeat;
+  background-size: cover;
+  color: white;
+  }
+
+h2 {
+  color: black;
+  padding: 70px 0;
+  text-align: left;
+  margin-left: 30px;
+  font-family:  Georgia, Times, 'Times New Roman', serif;
+	font-weight: bold;
+	font-size: 18px;
 }

@@ -1,12 +1,12 @@
-<mat-toolbar color="white" class="search-bar">
+<div class="background">
   <mat-form-field color="primary">
     <input
+      color="primary"
       name="searchdata"
       #searchdata="ngModel"
       matInput
       [(ngModel)]="searchKey"
       required
-      placeholder="Search..."
     />
   </mat-form-field>
   <button
@@ -15,62 +15,76 @@
     class="search-button"
     (click)="search()"
   >
-    Search a makeup
+    {{ "SEARCH_MAKEUP" | translate }}
   </button>
-</mat-toolbar>
 
-<mat-error *ngIf="searchdata.hasError('required')">You must enter a makeup name</mat-error>
-<p>
-  <button
-    mat-raised-button
-    color="primary"
-    matBadge="8"
-    matBadgePosition="before"
-    matBadgeColor="accent"
-    (click)="fetchMakeup(name)"
-    *ngFor="let name of lastThreeSearches"
-  >
-    {{ name }}
-  </button>
-</p>
+  <mat-error *ngIf="searchdata.hasError('required')">{{
+    "MAKEUP_REQUIRED" | translate
+  }}</mat-error>
+  <p>
+    <button
+      mat-raised-button
+      color="primary"
+      matBadge="8"
+      matBadgePosition="before"
+      matBadgeColor="accent"
+      (click)="fetchMakeup(name)"
+      *ngFor="let name of lastThreeSearches"
+    >
+      {{ name }}
+    </button>
+  </p>
 
+  <div *ngFor="let selectedMakeup of selectedMakeup$ | async">
+    <h2>{{ selectedMakeup.name }}</h2>
 
-<div *ngFor="let selectedMakeup of (selectedMakeup$ | async)">
-  <h2>{{ selectedMakeup.name }}</h2>
+    <div><img [src]="selectedMakeup.pictureUrl" /></div>
 
-  <div><img [src]="selectedMakeup.pictureUrl" /></div>
+    <div *ngIf="selectedMakeup">
+      <form [formGroup]="form" (submit)="submit(selectedMakeup)">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'DESCRIBE_PRODUCT' | translate}}</mat-label>
+          <textarea formControlName="description" matInput></textarea>
+          <mat-error *ngIf="submitted && form.invalid"
+            >{{"REVIEW_REQUIRED" | translate}}</mat-error
+          >
+          <span>{{ form.controls.review?.value.length }}</span>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Select</mat-label>
+          <mat-select id="rating" formControlName="rating">
+            <mat-option *ngFor="let rating of ratings" [value]="rating">{{
+              rating
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-  <div *ngIf="selectedMakeup">
-    <form [formGroup]="form" (submit)="submit(selectedMakeup)">
-      <mat-form-field appearance="fill">
-        <mat-label>Input</mat-label>
-        <textarea formControlName="description" matInput></textarea>
-        <mat-error *ngIf="submitted && form.invalid">reviu savaldebuloa</mat-error>
-        <span>Characters:{{form.controls.review?.value.length}}</span>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Select</mat-label>
-        <mat-select id="rating" formControlName="rating"  >
-          <mat-option *ngFor="let rating of ratings" [value]="rating" >{{ rating }}</mat-option>
-        </mat-select>
-
-      </mat-form-field>
-
-        <mat-radio-group aria-label="Select an option" formControlName='status'>
-          <mat-radio-button [value]="status.Purchased">purchased</mat-radio-button>
-          <mat-radio-button [value]="status.Purchase_Later">purchase-later</mat-radio-button>
+        <mat-radio-group  appearance="fill" aria-label="Select an option" formControlName="status">
+          <mat-radio-button [value]="status.Purchased"
+            >purchased</mat-radio-button
+          >
+          <mat-radio-button [value]="status.Purchase_Later"
+            >purchase-later</mat-radio-button
+          >
         </mat-radio-group>
 
         <div *ngIf="canBuyLater">
-          <mat-select class="select-purchase-option" formControlName="whenToBuy"  >
-            <mat-option  [value]="null" hidden >When to buy</mat-option>
+          <mat-select
+            class="select-purchase-option"
+            formControlName="whenToBuy"
+          >
+            <mat-option [value]="null" hidden>When to buy</mat-option>
 
-            <mat-option *ngFor="let w of whenToBuy" [value]="w.value">{{w.label | translate}}</mat-option>
-            <mat-error *ngIf="form.controls.whenToBuy?.errors?.required"></mat-error>
+            <mat-option *ngFor="let w of whenToBuy" [value]="w.value">{{
+              w.label | translate
+            }}</mat-option>
+            <mat-error
+              *ngIf="form.controls.whenToBuy?.errors?.required"
+            ></mat-error>
           </mat-select>
         </div>
-      <button class="button" type="submit">Add</button>
-
-    </form>
+        <button class="button" type="submit">Add</button>
+      </form>
+    </div>
   </div>
 </div>

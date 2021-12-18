@@ -33,4 +33,5 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
   ],
 })
+
 export class AuthModule {}
