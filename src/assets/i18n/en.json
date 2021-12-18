@@ -16,12 +16,24 @@
       "SIGN_OUT": "Sign Out"
     }
   },
+  "catalogue": {
+    "TOMORROW": "Tomorrow",
+    "TODAY": "Today",
+    "THISWEEK": "This week",
+    "THISMONTH": "This month",
+    "THISYEAR": "This year"
+  },
   "ADD_MAKEUP": "Add MakeUp",
   "MAKEUP_DESCRIPTION": "Here you can find a different kind of makeup products",
   "SEARCH_MAKEUP": "Search a makeup",
   "SEARCH": "search..",
   "MAKEUP_REQUIRED": "You must enter a makeup brand name",
   "REVIEW_REQUIRED": "Product Review is required",
-  "DESCRIBE_PRODUCT": "Write a product review"
+  "DESCRIBE_PRODUCT": "Write a product review",
+  "RATING": "Rating",
+  "WHEN_TO_BUY": "When are you planning to buy?",
+  "PURCHASED": "It is already purchased",
+  "PURCHASE_LATER": "Purchase later",
+  "ADD": "Add"
 
 }

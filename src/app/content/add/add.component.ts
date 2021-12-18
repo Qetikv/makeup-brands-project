@@ -100,6 +100,7 @@ export class AddComponent implements OnInit, OnDestroy {
       whenToBuy: value.whenToBuy || '',
     };
     this.facade.submit(body);
+    this.formReset();
   }
 
   get lastThreeSearches(): string[] {

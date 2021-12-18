@@ -37,8 +37,7 @@
 
   <div *ngFor="let selectedMakeup of selectedMakeup$ | async">
     <h2>{{ selectedMakeup.name }}</h2>
-
-    <div><img [src]="selectedMakeup.pictureUrl" /></div>
+    <img class="searchedPicture" [src]="selectedMakeup.pictureUrl"/>
 
     <div *ngIf="selectedMakeup">
       <form [formGroup]="form" (submit)="submit(selectedMakeup)">
@@ -51,7 +50,7 @@
           <span>{{ form.controls.review?.value.length }}</span>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Select</mat-label>
+          <mat-label>{{ 'RATING' | translate}}}</mat-label>
           <mat-select id="rating" formControlName="rating">
             <mat-option *ngFor="let rating of ratings" [value]="rating">{{
               rating
@@ -61,10 +60,10 @@
 
         <mat-radio-group  appearance="fill" aria-label="Select an option" formControlName="status">
           <mat-radio-button [value]="status.Purchased"
-            >purchased</mat-radio-button
+            >{{ 'PURCHASED' | translate}}</mat-radio-button
           >
           <mat-radio-button [value]="status.Purchase_Later"
-            >purchase-later</mat-radio-button
+            >{{ 'PURCHASE_LATER' | translate}}</mat-radio-button
           >
         </mat-radio-group>
 
@@ -73,18 +72,18 @@
             class="select-purchase-option"
             formControlName="whenToBuy"
           >
-            <mat-option [value]="null" hidden>When to buy</mat-option>
+            <mat-option [value]="null" hidden>{{ 'WHEN_TO_BUY' | translate}}</mat-option>
 
             <mat-option *ngFor="let w of whenToBuy" [value]="w.value">{{
               w.label | translate
             }}</mat-option>
-            <mat-error
-              *ngIf="form.controls.whenToBuy?.errors?.required"
-            ></mat-error>
           </mat-select>
+          <mat-error
+          *ngIf="form.controls.whenToBuy?.errors?.required"
+        ></mat-error>
         </div>
-        <button class="button" type="submit">Add</button>
+        <button mat-button class="button" (click)="submit(selectedMakeup)" type="submit">{{ "ADD" | translate}}</button>
       </form>
+      </div>
     </div>
   </div>
-</div>
