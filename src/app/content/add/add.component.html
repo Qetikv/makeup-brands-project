@@ -41,15 +41,13 @@
 
     <div *ngIf="selectedMakeup">
       <form [formGroup]="form" (submit)="submit(selectedMakeup)">
-        <mat-form-field appearance="fill">
           <mat-label>{{ 'DESCRIBE_PRODUCT' | translate}}</mat-label>
           <textarea formControlName="description" matInput></textarea>
           <mat-error *ngIf="submitted && form.invalid"
             >{{"REVIEW_REQUIRED" | translate}}</mat-error
           >
           <span>{{ form.controls.review?.value.length }}</span>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field>
           <mat-label>{{ 'RATING' | translate}}}</mat-label>
           <mat-select id="rating" formControlName="rating">
             <mat-option *ngFor="let rating of ratings" [value]="rating">{{
@@ -68,6 +66,7 @@
         </mat-radio-group>
 
         <div *ngIf="canBuyLater">
+          <mat-form-field>
           <mat-select
             class="select-purchase-option"
             formControlName="whenToBuy"
@@ -77,12 +76,13 @@
             <mat-option *ngFor="let w of whenToBuy" [value]="w.value">{{
               w.label | translate
             }}</mat-option>
+            <mat-error
+              *ngIf="form.controls.whenToBuy?.errors?.required"
+            ></mat-error>
           </mat-select>
-          <mat-error
-          *ngIf="form.controls.whenToBuy?.errors?.required"
-        ></mat-error>
+        </mat-form-field>
         </div>
-        <button mat-button class="button" (click)="submit(selectedMakeup)" type="submit">{{ "ADD" | translate}}</button>
+        <button mat-button class="button" type="submit">{{ "ADD" | translate}}</button>
       </form>
       </div>
     </div>

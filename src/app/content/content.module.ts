@@ -17,7 +17,6 @@ import { CurrencyApiService } from './services/currency-api.service';
 import { AddMakeupStorage } from './add/add-makeup.storage';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
-import { MakeupListItemComponent } from './list/movie-list-item/makeup-list-item.component';
 import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
@@ -25,8 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
     ListComponent,
     AddComponent,
     ContentComponnent,
-    DetailsComponent,
-    MakeupListItemComponent
+    DetailsComponent
   ],
   imports: [
     CommonModule,
